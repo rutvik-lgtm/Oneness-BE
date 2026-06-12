@@ -8,7 +8,7 @@ const accommodationBookingSchema = new mongoose.Schema({
   },
   fullName: {
     type: String,
-    required: false,
+    required: true,
     trim: true
   },
   email: {
