@@ -12,7 +12,6 @@ dotenv.config({ path: path.join(__dirname, '../.env') });
 import Ticket from '../models/Ticket.js';
 import Accommodation from '../models/Accommodation.js';
 import Tour from '../models/Tour.js';
-import TeamMember from '../models/TeamMember.js';
 import Teacher from '../models/Teacher.js';
 import BlogPost from '../models/BlogPost.js';
 
@@ -29,7 +28,6 @@ const seedData = async () => {
     await Ticket.deleteMany();
     await Accommodation.deleteMany();
     await Tour.deleteMany();
-    await TeamMember.deleteMany();
     await Teacher.deleteMany();
     await BlogPost.deleteMany();
     console.log('Old data cleared.');
@@ -119,31 +117,7 @@ const seedData = async () => {
     ]);
     console.log(`${tours.length} Tours seeded.`);
 
-    // 4. Seed Team Members
-    console.log('Seeding Team Members...');
-    const teamMembers = await TeamMember.insertMany([
-      {
-        name: 'Aarav Sharma',
-        role: 'Festival Director & Founder',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300',
-        bio: 'Aarav has been organizing wellness and music festivals across India for over 12 years with a passion for community building.',
-        socials: {
-          linkedin: 'https://linkedin.com/in/aarav-sharma',
-          instagram: 'https://instagram.com/aarav'
-        }
-      },
-      {
-        name: 'Meera Patel',
-        role: 'Operations Head',
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300',
-        bio: 'Meera manages guest hospitality, accommodations, and site logistics to ensure a seamless and sustainable event.',
-        socials: {
-          linkedin: 'https://linkedin.com/in/meera-patel',
-          instagram: 'https://instagram.com/meera'
-        }
-      }
-    ]);
-    console.log(`${teamMembers.length} Team Members seeded.`);
+
 
     // 5. Seed Teachers
     console.log('Seeding Teachers/Speakers...');
