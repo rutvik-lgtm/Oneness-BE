@@ -14,7 +14,6 @@ import Accommodation from '../models/Accommodation.js';
 import Tour from '../models/Tour.js';
 import TeamMember from '../models/TeamMember.js';
 import Teacher from '../models/Teacher.js';
-import Gallery from '../models/Gallery.js';
 import BlogPost from '../models/BlogPost.js';
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/oneness-festival';
@@ -32,7 +31,6 @@ const seedData = async () => {
     await Tour.deleteMany();
     await TeamMember.deleteMany();
     await Teacher.deleteMany();
-    await Gallery.deleteMany();
     await BlogPost.deleteMany();
     console.log('Old data cleared.');
 
@@ -175,29 +173,7 @@ const seedData = async () => {
     ]);
     console.log(`${teachers.length} Teachers seeded.`);
 
-    // 6. Seed Gallery
-    console.log('Seeding Gallery Items...');
-    const galleryItems = await Gallery.insertMany([
-      {
-        title: 'Morning Yoga Flow',
-        url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600',
-        type: 'image',
-        category: 'Yoga'
-      },
-      {
-        title: 'Opening Ceremony Concert',
-        url: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=600',
-        type: 'image',
-        category: 'Music'
-      },
-      {
-        title: 'Artisan Craft Bazaar',
-        url: 'https://images.unsplash.com/photo-1488459718432-01055e8793dd?q=80&w=600',
-        type: 'image',
-        category: 'Bazaar'
-      }
-    ]);
-    console.log(`${galleryItems.length} Gallery items seeded.`);
+
 
     // 7. Seed Blog Posts
     console.log('Seeding Blog Posts...');
