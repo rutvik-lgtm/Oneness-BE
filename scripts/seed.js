@@ -15,7 +15,12 @@ import Tour from '../models/Tour.js';
 import Teacher from '../models/Teacher.js';
 import BlogPost from '../models/BlogPost.js';
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/oneness-festival';
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error('Missing env var: MONGO_URI. Add MONGO_URI to Oneness-BE-main/.env');
+  process.exit(1);
+}
 
 const seedData = async () => {
   try {
@@ -117,8 +122,6 @@ const seedData = async () => {
     ]);
     console.log(`${tours.length} Tours seeded.`);
 
-
-
     // 5. Seed Teachers
     console.log('Seeding Teachers/Speakers...');
     const teachers = await Teacher.insertMany([
@@ -146,8 +149,6 @@ const seedData = async () => {
       }
     ]);
     console.log(`${teachers.length} Teachers seeded.`);
-
-
 
     // 7. Seed Blog Posts
     console.log('Seeding Blog Posts...');
