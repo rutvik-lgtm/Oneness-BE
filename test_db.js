@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
-const MONGO_URI = 'mongodb://127.0.0.1:27017/oneness';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://oneness:onetwothree@oneness.u2yys6b.mongodb.net/oneness?retryWrites=true&w=majority';
 
 console.log('Attempting to connect to MongoDB...');
 mongoose.connect(MONGO_URI)

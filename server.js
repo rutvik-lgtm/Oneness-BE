@@ -9,6 +9,7 @@ import teacherRoutes from './routes/teacherRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
 import getInvolvedRoutes from './routes/getInvolvedRoutes.js';
 import inquiryRoutes from './routes/inquiryRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 import { submitInquiry } from './controllers/inquiryController.js';
 
 dotenv.config();
@@ -33,6 +34,7 @@ app.use('/api/teachers', teacherRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/get-involved', getInvolvedRoutes);
 app.use('/api/inquiries', inquiryRoutes);
+app.use('/api/contacts', contactRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
